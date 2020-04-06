@@ -11,7 +11,8 @@
 //? Regex value \w Mathes only characters. Disregards any space, punctuation, symbol.
 //? Want to use something like word.replace(/[^\w]/g,"").toLowerCase()
 
-function anagrams(stringA, stringB) {
+//! Solution One
+/* function anagrams(stringA, stringB) {
   const aCharMap = buildCharMap(stringA);
   const bCharMap = buildCharMap(stringB);
 
@@ -19,8 +20,8 @@ function anagrams(stringA, stringB) {
     return false;
   }
 
-  for (let char in aCharMap){
-    if (aCharMap[char] !== bCharMap[char]){
+  for (let char in aCharMap) {
+    if (aCharMap[char] !== bCharMap[char]) {
       return false;
     }
   }
@@ -35,6 +36,16 @@ function buildCharMap(str) {
   }
 
   return charMap;
+} */
+
+//! Solution Two
+function anagrams(stringA, stringB) {
+  return cleanString(stringA) === cleanString(stringB);
+}
+
+//* Helper function
+function cleanString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
 }
 
 module.exports = anagrams;
