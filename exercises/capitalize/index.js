@@ -15,7 +15,7 @@
 //? - Join first letter with rest of the string
 //? - Push result into 'words' array
 //? Join 'words' into a string and return it
-function capitalize(str) {
+/* function capitalize(str) {
 	const words = [];
 
 	for (let word of str.split(' ')) {
@@ -23,6 +23,26 @@ function capitalize(str) {
   }
   
   return words.join(' ');
+} */
+
+//! Solution 2
+//? Create 'result' which is the first character of the input string capitalized
+//? For each character in the string
+//? - IF the character to the left of a space
+//? -- Capitalize it and add it to the 'result'
+//? - ELSE
+//? -- Add it to the 'result'
+function capitalize(str) {
+	let result = str[0].toUpperCase();
+
+	for (let i = 1; i < str.length; i++) {
+		if (str[i - 1] === ' ') {
+			result += str[i].toUpperCase();
+		} else {
+			result += str[i];
+		}
+	}
+	return result;
 }
 
 module.exports = capitalize;
